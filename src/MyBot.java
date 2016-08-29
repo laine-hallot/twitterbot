@@ -5,12 +5,16 @@ import twitter4j.TwitterFactory;
 
 public class MyBot{
 
-	public static void main(String args[]) throws TwitterException{
+	public static void main(String[] args) throws TwitterException{
 
 		PostTextMaker bullshit = new PostTextMaker();
 
+		new ImageCompositor();
 		Twitter twitter = TwitterFactory.getSingleton();
-		Status status = twitter.updateStatus(bullshit.tweetString);
+		PostTextMaker test = new PostTextMaker();
+		test.getTimeline();
+
+		//Status status = twitter.updateStatus(bullshit.tweetString);
 		System.out.println("Done.");
 	 }
 }
