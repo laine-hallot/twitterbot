@@ -1,7 +1,9 @@
 <component name="libraryTable">
   <library name="twitter4j-core-4.0.4">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../MyBot/twitter4j-core-4.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/marvin/framework/marvin_1.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Api/twitter4j-core-4.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rita.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
