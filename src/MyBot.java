@@ -16,5 +16,6 @@ public class MyBot{
 
 		//Status status = twitter.updateStatus(bullshit.tweetString);
 		System.out.println("Done.");
+
 	 }
 }
