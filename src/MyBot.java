@@ -9,13 +9,13 @@ public class MyBot{
 
 		PostTextMaker bullshit = new PostTextMaker();
 
-		new ImageCompositor();
+		//new ImageCompositor();
 		Twitter twitter = TwitterFactory.getSingleton();
 		PostTextMaker test = new PostTextMaker();
-		test.getTimeline();
+
 
 		//Status status = twitter.updateStatus(bullshit.tweetString);
-		System.out.println("Done.");
+		System.out.println(test.getTimeline());
 
 	 }
 }
