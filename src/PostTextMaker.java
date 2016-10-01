@@ -1,3 +1,4 @@
+import com.sun.xml.internal.ws.util.StringUtils;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -13,12 +14,16 @@ import java.util.List;
 public class PostTextMaker {
 
 
-    void makeMarkov() throws IOException{
+    String makeMarkov() throws IOException{
         JMegaHal hal = new JMegaHal();
 
         hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
-        String sentenceOne = hal.getSentence();
-        System.out.println(sentenceOne);
+        String sentence = hal.getSentence();
+        if (sentence.length()>=140) {
+            sentence= sentence.substring(0,140);
+            System.out.println(sentence);
+        }
+        return sentence;
     }
 
     List getTimeline() throws TwitterException {

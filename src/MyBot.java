@@ -1,24 +1,11 @@
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-
-import java.io.IOException;
+import java.util.Timer;
 
 public class MyBot{
 
-	public static void main(String[] args) throws TwitterException{
+	public static void main(String[] args) {
+		Timer timer = new Timer();
+		TimerThread postEveryHoure = new TimerThread();
 
-		PostTextMaker bullshit = new PostTextMaker();
-
-		//new ImageCompositor();
-		Twitter twitter = TwitterFactory.getSingleton();
-		PostTextMaker test = new PostTextMaker();
-
-		try {
-			test.makeMarkov();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		timer.schedule(new TimerThread(),0,3600000);
 	}
 }
