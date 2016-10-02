@@ -12,23 +12,9 @@ import java.util.TimerTask;
 public class TimerThread extends TimerTask{
 
         @Override
-        public void run(){
-            PostTextMaker bullshit = new PostTextMaker();
-
-            //new ImageCompositor();
-            Twitter twitter = TwitterFactory.getSingleton();
+        public void run() {
             PostTextMaker test = new PostTextMaker();
 
-
-            Status status = null;
-            try {
-                status = twitter.updateStatus(test.makeMarkov());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (TwitterException e) {
-                e.printStackTrace();
-            }
-
+            test.creatPost();
         }
-
 }

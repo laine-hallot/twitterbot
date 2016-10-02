@@ -1,3 +1,4 @@
+import com.sun.xml.internal.fastinfoset.sax.SystemIdResolver;
 import com.sun.xml.internal.ws.util.StringUtils;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -13,12 +14,20 @@ import java.util.List;
  */
 public class PostTextMaker {
 
+    JMegaHal hal = new JMegaHal();
+    Twitter twitter = TwitterFactory.getSingleton();
 
     String makeMarkov() throws IOException{
-        JMegaHal hal = new JMegaHal();
 
-        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
+        try {
+            getTimeline();
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
+
+        //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
         String sentence = hal.getSentence();
+
         if (sentence.length()>=140) {
             sentence= sentence.substring(0,140);
             System.out.println(sentence);
@@ -26,10 +35,28 @@ public class PostTextMaker {
         return sentence;
     }
 
-    List getTimeline() throws TwitterException {
-        Twitter twitter = TwitterFactory.getSingleton();
+    void getTimeline() throws TwitterException {
+        // The factory instance is re-useable and thread safe.
         List<Status> statuses = twitter.getHomeTimeline();
-        return statuses;
+        System.out.println("Showing home timeline.");
+        for (Status status : statuses) {
+            System.out.println(status.getText());
+            hal.add(status.getText());
+        }
     }
+
+    void creatPost(){
+
+        Status status = null;
+        try {
+            status = twitter.updateStatus(makeMarkov());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
