@@ -6,6 +6,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import org.jibble.jmegahal.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,12 +21,15 @@ public class PostTextMaker {
     String makeMarkov() throws IOException{
 
         try {
-            getTimeline();
+            getTimeline(); //get first 10 posts in the twitter feed.
         } catch (TwitterException e) {
             e.printStackTrace();
         }
 
-        //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
+        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/Sheck.txt");
+        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
+        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/samuraiCop.txt");
+
         String sentence = hal.getSentence();
 
         if (sentence.length()>=140) {
@@ -46,7 +50,6 @@ public class PostTextMaker {
     }
 
     void creatPost(){
-
         Status status = null;
         try {
             status = twitter.updateStatus(makeMarkov());
