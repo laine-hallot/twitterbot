@@ -6,6 +6,6 @@ public class MyBot{
 		Timer timer = new Timer();
 		TimerThread postEveryHoure = new TimerThread();
 
-		timer.schedule(new TimerThread(),0,3600000);
+		timer.schedule(new TimerThread(),0,360000);
 	}
 }
