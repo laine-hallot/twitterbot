@@ -7,7 +7,10 @@ import twitter4j.TwitterFactory;
 import org.jibble.jmegahal.*;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -41,6 +44,7 @@ public class PostTextMaker {
 
     void getTimeline() throws TwitterException {
         // The factory instance is re-useable and thread safe.
+        PrintWriter feedDoc;
         List<Status> statuses = twitter.getHomeTimeline();
         System.out.println("Showing home timeline.");
         for (Status status : statuses) {
