@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="memebot9000:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/memebot9000_jar</output-path>
+    <root id="archive" name="memebot9000.jar">
+      <element id="module-output" name="memebot9000" />
+      <element id="library" level="project" name="marvin_1.5.3" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/JMegaHal.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/twitter4j-core-4.0.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
