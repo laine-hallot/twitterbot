@@ -14,7 +14,6 @@ public class TimerThread extends TimerTask{
         @Override
         public void run() {
             PostTextMaker test = new PostTextMaker();
-
             test.creatPost();
         }
 }
