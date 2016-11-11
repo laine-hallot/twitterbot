@@ -23,9 +23,9 @@ public class PostTextMaker {
             e.printStackTrace();
         }
 
-        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/Sheck.txt");
-        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
-        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/samuraiCop.txt");
+        //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/Sheck.txt");
+        //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
+        //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/samuraiCop.txt");
         String sentence = hal.getSentence();
 
         if (sentence.length()>=140) { //makes sure the sentance is bellow twitter's 140 characters
@@ -37,13 +37,19 @@ public class PostTextMaker {
 
     void getTimeline() throws TwitterException, FileNotFoundException {
         // The factory instance is re-useable and thread safe.
-        PrintWriter feedDoc = new PrintWriter(new FileOutputStream(new File("/home/meyerhallot/IdeaProjects/memebot9000/feed.txt"),true));
         List<Status> statuses = twitter.getHomeTimeline();
         System.out.println("Showing home timeline.");
         for (Status status : statuses) {
             System.out.println(status.getText());
             hal.add(status.getText());
-            feedDoc.append(status.getText());
+            try(FileWriter fw = new FileWriter("feed.txt", true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw))
+            {
+                out.println(status.getText());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
