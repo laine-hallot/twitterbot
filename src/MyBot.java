@@ -7,5 +7,7 @@ public class MyBot{
 		TimerThread postEveryHoure = new TimerThread();
 
 		timer.schedule(new TimerThread(),0,360000);
+
+		ImageCompositor image = new ImageCompositor();
 	}
 }
