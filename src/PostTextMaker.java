@@ -1,8 +1,5 @@
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import org.jibble.jmegahal.*;
+import twitter4j.*;
+/*import org.jibble.jmegahal.*;*/
 
 import java.io.*;
 import java.util.List;
@@ -26,6 +23,7 @@ public class PostTextMaker {
         //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/Sheck.txt");
         //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
         //hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/samuraiCop.txt");
+        hal.addDocument("file:///home/meyerhallot/IdeaProjects/memebot9000/feed.txt");
         String sentence = hal.getSentence();
 
         if (sentence.length()>=140) { //makes sure the sentance is bellow twitter's 140 characters
@@ -55,7 +53,7 @@ public class PostTextMaker {
 
     void creatPost(){
         Status status = null;
-        try {
+        try{
             status = twitter.updateStatus(makeMarkov());
         } catch (IOException e) {
             e.printStackTrace();

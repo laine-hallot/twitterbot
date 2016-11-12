@@ -2,9 +2,6 @@
  * Created by mhallot on 8/25/16.
  */
 
-//java native libraires
-import java.util.ArrayList;
-import java.util.List;
 
 
 //marvin libraies
@@ -19,22 +16,28 @@ import twitter4j.*;
 
 public class ImageCompositor {
 
+    private MarvinImage image,backupImage;
+    private MarvinImagePlugin imagePlugin;
+
     public ImageCompositor(){
+        loadImage();
+        effect();
+        saveImage();
 
-        // 1. load images 01.jpg, 02.jpg, ..., 05.jpg into a List
-        List<MarvinImage> images = new ArrayList<MarvinImage>();
-        for(int i=1; i<=3; i++){
-            images.add(MarvinImageIO.loadImage("./res/0"+i+".jpg"));
-        }
+    }
 
-        // 2. Load plug-in and process the image
-        MarvinImagePlugin merge = MarvinPluginLoader.loadImagePlugin("org.marvinproject.image.combine.mergePhotos");
-        merge.setAttribute("threshold", 38);
+    private void loadImage(){
+        image = MarvinImageIO.loadImage("/home/meyerhallot/IdeaProjects/memebot9000/res/01.jpg");
+        backupImage = image.clone();
+    }
 
-        // 3. Process the image list and save the output
-        MarvinImage output = images.get(0).clone();
-        merge.process(images, output);
-        MarvinImageIO.saveImage(output, "./res/merge_output.jpg");
+    private void effect(){
+        imagePlugin = MarvinPluginLoader.loadImagePlugin("org.marvinproject.image.color.invert.jar");
+        imagePlugin.process(image, image);
+    }
+
+    private void saveImage(){
+        MarvinImageIO.saveImage(image,"/home/meyerhallot/IdeaProjects/memebot9000/res/01Test.jpg");
     }
 
     public void getMediaFiles() throws TwitterException {
