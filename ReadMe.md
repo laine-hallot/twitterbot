@@ -1,13 +1,14 @@
-# Memebot9000
-This is a twitter bot intend to be its own self sustaining meme page that when finished will be able to:
+# Memebot9000 v[Come up with a versioning system and fill this in]
+A twitter bot designed to operate a self sustaining meme page that will:
 
+* Make text posts
+* Create images by combining other images from twitter
+* Gauge the success of posts by checking its like/follower ratio and use that information to create more successful posts
 
-* Make text post 
+The end goal of Memebot9000 is to create the most optimal meme machine
 
+## How It Works
+*TODO*
 
-* Creat images by combining other twitter pictures
-
-
-* Gauge the success of a posts by checking its like to follower ratio and using that information to create more sucsesful posts
-
-The end goal of this project is to creat the most optimal meme machine
+## Version History
+*TODO*
